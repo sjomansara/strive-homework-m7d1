@@ -19,8 +19,8 @@ const SearchPage = () => {
                 if (response.ok) {
                     let data = await response
                     let readable = await data.json()
-                    console.log(readable)
-                    return data
+                    console.log(readable.jobs)
+                    return readable.jobs
                 }
             }
         } catch (error) {
@@ -31,7 +31,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         setDataFetched(fetchData())
-    }, [])
+    }, [searchTerm])
     
     // export const fetchdata = async () => {
     //     try {
