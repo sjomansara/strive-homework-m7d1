@@ -1,15 +1,14 @@
 import React from 'react';
 import { ListGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-const DropdownItem = () => {
+const DropdownItem = (props) => {
     return (
-        <ListGroup>
-            <ListGroup.Item>Cras justo odio</ListGroup.Item>
-            <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-            <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-            <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-            <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-        </ListGroup>
+        <>
+        <Link to={`/company-detail/${props.id}`}>
+            <ListGroup.Item>{props.title}</ListGroup.Item>
+        </Link>
+        </>
     );
   }
   
