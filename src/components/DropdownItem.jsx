@@ -6,7 +6,7 @@ const DropdownItem = (props) => {
     return (
         <>
         <Link to={`/company-detail/${props.id}`}>
-            <ListGroup.Item>{props.title}</ListGroup.Item>
+            <ListGroup.Item className="text-left" style={{color: "black"}}>{props.title}</ListGroup.Item>
         </Link>
         </>
     );
