@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { Form } from "react-bootstrap";
 import DropdownItem from './DropdownItem';
+import MyJumbotron from './MyJumbotron';
+import MyNavbar from './MyNavbar';
 
 const SearchPage = () => {
     const [searchTerm, setSearchTerm] = useState("")
@@ -29,7 +31,10 @@ const SearchPage = () => {
     }
 
     return (
-        <Form onSubmit={onSubmit}>
+        <div>
+        <MyNavbar />
+        <MyJumbotron />
+        <Form className="m-5" onSubmit={onSubmit}>
             <Form.Label className="text-left">Search for jobs:</Form.Label>
             <Form.Control value={searchTerm} onChange={onSearchChange} type="text" autoComplete="off" placeholder="Search" />
             {dataFetched.map(job => {
@@ -38,6 +43,7 @@ const SearchPage = () => {
                 )
             })}
         </Form>
+        </div>
     );
   }
   

@@ -28,12 +28,12 @@ function DropdownItem({ data, favorites, addFavorite, removeFavorite }) {
             <Col xs={3} className="d-flex">
                 {
                     isFav
-                        ? <HeartFill color="gold" size={16} className="me-4 my-auto" onClick={toggleFavorite}/>
-                        : <Heart color="gold" size={16} className="me-4 my-auto" onClick={toggleFavorite} />
+                        ? <HeartFill color="red" size={16} className="me-4 mr-4 my-auto" onClick={toggleFavorite}/>
+                        : <Heart color="red" size={16} className="me-4 mr-4 my-auto" onClick={toggleFavorite} />
                 }
-                <Link to={`/${data.company_name}`}>{data.company_name}</Link>
+                <Link style={{color: "black"}} to={`/${data.company_name}`}>{data.company_name}</Link>
             </Col>
-            <Col xs={9}><Link to={{ pathname: data.url }} target='_blank'>{data.title}</Link></Col>
+            <Col xs={9}><Link style={{color: "black"}} to={{ pathname: data.url }} target='_blank'>{data.title}</Link></Col>
         </Row>
     )
 }
