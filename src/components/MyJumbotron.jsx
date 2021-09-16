@@ -4,7 +4,7 @@ const MyJumbotron = () => {
     return (
         <Jumbotron fluid>
         <Container>
-          <h1>Welcome to My Job Search Page</h1>
+          <h1 style={{marginLeft: "35px"}}>Welcome to Job Search Engine</h1>
         </Container>
       </Jumbotron>
     )
