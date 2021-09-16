@@ -34,7 +34,7 @@ const SearchPage = () => {
         <div>
         <MyNavbar />
         <MyJumbotron />
-        <Form style={{marginLeft: "200px", marginRight: "200px"}} onSubmit={onSubmit}>
+        <Form className="m-5" onSubmit={onSubmit}>
             <Form.Label className="text-left">Search for jobs:</Form.Label>
             <Form.Control value={searchTerm} onChange={onSearchChange} type="text" autoComplete="off" placeholder="Search" />
             {dataFetched.map(job => {
