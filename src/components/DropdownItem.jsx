@@ -1,15 +1,42 @@
-import React from 'react';
-import { ListGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from 'react'
+import { Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { Heart, HeartFill } from 'react-bootstrap-icons'
+import { addFav, removeFav } from '../store/actions'
+import { connect } from 'react-redux'
 
-const DropdownItem = (props) => {
+const mapStateToProps = s => s
+
+const mapDispatchToProps = (dispatch) => ({
+    addFavorite: (company) => dispatch(addFav(company)),
+    removeFavorite: (company) => dispatch(removeFav(company))
+})
+
+
+function DropdownItem({ data, favorites, addFavorite, removeFavorite }) {
+
+    const isFav = favorites.includes(data.company_name)
+    console.log(isFav, favorites)
+    const toggleFavorite = () => {
+        isFav 
+            ? removeFavorite(data.company_name) 
+            : addFavorite(data.company_name) 
+    }
+
     return (
-        <>
-        <Link to={`/company-detail/${props.id}`}>
-            <ListGroup.Item className="text-left" style={{color: "black"}}>{props.title}</ListGroup.Item>
-        </Link>
-        </>
-    );
-  }
-  
-  export default DropdownItem;
+        <Row className="mx-0 mt-3 p-3" style={{ border: '1px solid #00000033', borderRadius: 4 }}>
+            <Col xs={3} className="d-flex">
+                {
+                    isFav
+                        ? <HeartFill color="gold" size={16} className="me-4 my-auto" onClick={toggleFavorite}/>
+                        : <Heart color="gold" size={16} className="me-4 my-auto" onClick={toggleFavorite} />
+                }
+                <Link to={`/${data.company_name}`}>{data.company_name}</Link>
+            </Col>
+            <Col xs={9}><Link to={{ pathname: data.url }} target='_blank'>{data.title}</Link></Col>
+        </Row>
+    )
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(DropdownItem)

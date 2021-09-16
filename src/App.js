@@ -1,22 +1,25 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchPage from './components/SearchPage';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import JobDetails from './components/JobDetails';
-import MyNavbar from './components/MyNavbar';
-import MyJumbotron from './components/MyJumbotron';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import store from './store';
+import { Provider } from 'react-redux'
+import Favorites from './components/Favorites';
+import CompanySearchResults from './components/CompanySearchResults'
+
 
 
 function App() {
   return (
-    <Router>
-    <div className="App">
-      <MyNavbar />
-      <MyJumbotron />
-      <Route exact path="/" component={SearchPage} />
-      <Route exact path="/company-detail/:id" component={JobDetails} />
-    </div>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={SearchPage} />
+          <Route exact path="/favorites" component={Favorites} />
+          <Route exact path='/:companyName' component={CompanySearchResults} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
