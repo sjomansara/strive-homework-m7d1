@@ -2,14 +2,14 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { Heart, HeartFill } from 'react-bootstrap-icons'
-import { addFav, removeFav } from '../store/actions'
+import { addToFav, removeFromFav } from '../store/actions'
 import { connect } from 'react-redux'
 
 const mapStateToProps = s => s
 
 const mapDispatchToProps = (dispatch) => ({
-    addFavorite: (company) => dispatch(addFav(company)),
-    removeFavorite: (company) => dispatch(removeFav(company))
+    addFavorite: (company) => dispatch(addToFav(company)),
+    removeFavorite: (company) => dispatch(removeFromFav(company))
 })
 
 
